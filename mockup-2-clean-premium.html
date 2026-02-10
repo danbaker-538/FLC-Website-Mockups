@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Loving Co. - Mockup 2: Clean & Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #E8724A;
+            --orange-light: #F5A68A;
+            --cream: #FFFCF8;
+            --cream-warm: #FEF7F0;
+            --navy: #1E293B;
+            --gray: #64748B;
+            --gray-light: #94A3B8;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 6rem;
+            background: var(--cream);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .shop-btn {
+            background: var(--navy);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .shop-btn:hover {
+            background: var(--orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 10rem 6rem 6rem;
+            gap: 4rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content h1 em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 480px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+            padding: 1.125rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #D4603A;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-product {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .product-showcase {
+            position: relative;
+            padding: 4rem;
+        }
+
+        .product-showcase::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--cream-warm) 0%, #FFE8DC 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .product-showcase img {
+            max-width: 280px;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.12));
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: white;
+            padding: 3rem 6rem;
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--orange);
+        }
+
+        .trust-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 8rem 6rem;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header span {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            margin-top: 1rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Product Detail */
+        .product-detail {
+            padding: 6rem;
+            background: white;
+        }
+
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .product-detail-image {
+            background: linear-gradient(135deg, #FFF5F0 0%, #FFE8DC 100%);
+            border-radius: 24px;
+            padding: 4rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-detail-image img {
+            max-width: 240px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+        }
+
+        .product-detail-content h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-subtitle {
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-detail-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .ingredients {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .ingredient {
+            background: var(--cream-warm);
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+        }
+
+        /* Learn Section */
+        .learn-section {
+            padding: 8rem 6rem;
+            background: var(--cream-warm);
+        }
+
+        .learn-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .learn-intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .learn-intro h2 em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .learn-intro p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .learn-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .learn-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .learn-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+        }
+
+        .learn-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FFF5F0, #FFE8DC);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .learn-card-content h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .learn-card-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .learn-card-arrow {
+            color: var(--orange);
+            font-size: 1.25rem;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 8rem 6rem;
+            background: var(--cream);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .news-image {
+            height: 180px;
+            background: linear-gradient(135deg, #FFF5F0, #FFE8DC);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: var(--gray-light);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .news-card h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            margin: 0.75rem 0;
+            line-height: 1.3;
+        }
+
+        .news-link {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem;
+            background: var(--navy);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .cta-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .cta-form input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .cta-form button {
+            background: var(--orange);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-form button:hover {
+            background: #D4603A;
+        }
+
+        /* Footer */
+        footer {
+            background: #0F172A;
+            color: white;
+            padding: 5rem 6rem 3rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 4rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Design Label */
+        .design-label {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--orange);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <a href="#" class="logo">Fun Loving <span>Co.</span></a>
+            <ul class="nav-links">
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Learn</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="shop-btn">Shop Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Fun Without <em>Consequences.</em></h1>
+            <p>Misdemeanor delivers the social warmth of alcohol—relaxation, connection, euphoria—without the hangover, toxicity, or regret. It's time to feel good about feeling good.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn-primary">Shop Misdemeanor</a>
+                <a href="#" class="btn-secondary">How It Works &rarr;</a>
+            </div>
+        </div>
+        <div class="hero-product">
+            <div class="product-showcase">
+                <img src="assets/bottle.webp" alt="Misdemeanor Bottle">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <div class="trust-number">100%</div>
+            <div class="trust-label">Legal & FDA GRAS</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-number">0</div>
+            <div class="trust-label">Hangovers</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-number">2hr</div>
+            <div class="trust-label">Duration</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-number">3</div>
+            <div class="trust-label">Natural Ingredients</div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <span>How It Works</span>
+            <h2>From Shot to Social in Minutes</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Take a Shot</h4>
+                <p>One 1oz shot of Misdemeanor is all you need to get started.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Feel the Lift</h4>
+                <p>Within 15-30 minutes, feel a gentle wave of warmth and openness.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Connect</h4>
+                <p>Enjoy enhanced sociability and mild euphoria for about 2 hours.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Wake Refreshed</h4>
+                <p>No hangover, no regrets. Just great memories.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="product-detail-grid">
+            <div class="product-detail-image">
+                <img src="assets/bottle.webp" alt="Misdemeanor">
+            </div>
+            <div class="product-detail-content">
+                <h3>Misdemeanor</h3>
+                <p class="product-subtitle">The Original Social Shot</p>
+                <p>A proprietary blend of nature's finest mood enhancers. Kanna, a South African herb used for centuries, combined with Cacao Extract and Licorice Root creates a balanced, prosocial experience.</p>
+
+                <div class="ingredients">
+                    <span class="ingredient">Kanna Extract</span>
+                    <span class="ingredient">Cacao Extract</span>
+                    <span class="ingredient">Licorice Root</span>
+                </div>
+
+                <p>Effects last approximately 2 hours. All ingredients are FDA GRAS (Generally Recognized as Safe).</p>
+
+                <div class="price-row">
+                    <span class="price">$24.99</span>
+                    <a href="#" class="btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learn Section -->
+    <section class="learn-section">
+        <div class="learn-content">
+            <div class="learn-intro">
+                <h2>Learn What Makes Us <em>Different</em></h2>
+                <p>We believe you shouldn't have to choose between having fun and feeling good tomorrow. Here's the science behind Misdemeanor.</p>
+                <a href="#" class="btn-primary">Explore All</a>
+            </div>
+            <div class="learn-cards">
+                <a href="#" class="learn-card">
+                    <div class="learn-card-icon">🌿</div>
+                    <div class="learn-card-content">
+                        <h4>What is Kanna?</h4>
+                        <p>A South African succulent with centuries of traditional use</p>
+                    </div>
+                    <span class="learn-card-arrow">&rarr;</span>
+                </a>
+                <a href="#" class="learn-card">
+                    <div class="learn-card-icon">🧬</div>
+                    <div class="learn-card-content">
+                        <h4>The Science of Social</h4>
+                        <p>How serotonin reuptake inhibition creates connection</p>
+                    </div>
+                    <span class="learn-card-arrow">&rarr;</span>
+                </a>
+                <a href="#" class="learn-card">
+                    <div class="learn-card-icon">✓</div>
+                    <div class="learn-card-content">
+                        <h4>Safety & Testing</h4>
+                        <p>FDA GRAS ingredients and third-party lab verification</p>
+                    </div>
+                    <span class="learn-card-arrow">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News -->
+    <section class="news-section">
+        <div class="section-header">
+            <span>News</span>
+            <h2>The Latest from Fun Loving Co.</h2>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <p class="news-date">January 26, 2026</p>
+                    <h4>The Party's Over. And It's About to Get Better</h4>
+                    <a href="#" class="news-link">Read More &rarr;</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <p class="news-date">January 15, 2026</p>
+                    <h4>Why Alcohol Consumption Hit a 100-Year Low</h4>
+                    <a href="#" class="news-link">Read More &rarr;</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <p class="news-date">January 5, 2026</p>
+                    <h4>The Connection Crisis: A New Social Lubricant</h4>
+                    <a href="#" class="news-link">Read More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Be First in Line</h2>
+        <p>Misdemeanor launches in 2026. Sign up for early access, exclusive offers, and updates.</p>
+        <form class="cta-form">
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">Join Waitlist</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">Fun Loving <span>Co.</span></a>
+                <p>The funnest, legalest, non-alcoholic stuff on earth. Designed to bring people together without the downsides of alcohol.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Shop</h5>
+                <ul>
+                    <li><a href="#">Misdemeanor</a></li>
+                    <li><a href="#">Bundles</a></li>
+                    <li><a href="#">Subscribe & Save</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Learn</h5>
+                <ul>
+                    <li><a href="#">About Kanna</a></li>
+                    <li><a href="#">The Science</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Fun Loving Company. All rights reserved.
+        </div>
+    </footer>
+
+    <div class="design-label">Mockup 2: Clean & Premium</div>
+</body>
+</html>

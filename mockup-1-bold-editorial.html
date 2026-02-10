@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Loving Co. - Mockup 1: Bold & Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #E8724A;
+            --orange-dark: #D4603A;
+            --bg: #F9F9F9;
+            --bg-alt: #F2F2F2;
+            --blue: #29ABE2;
+            --dark: #1A1A2E;
+            --gray: #6B7280;
+            --light-blue: #D0D8E0;
+            --segment-empty: rgba(41, 171, 226, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Subtle noise/grain texture overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            background: var(--bg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid transparent;
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .logo {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cart-btn {
+            background: var(--orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: var(--orange-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, #FFF5EE 0%, var(--bg) 40%, #EEF7FC 100%);
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 560px;
+            z-index: 4;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.05;
+            color: var(--orange);
+        }
+
+        .hero h1 .highlight {
+            display: block;
+            color: var(--blue);
+        }
+
+        /* "GET LOOSE" wobble letters */
+        .loose-letter {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s;
+            cursor: default;
+        }
+
+        .loose-text:hover .loose-letter {
+            animation: wobble 0.5s ease-in-out;
+            animation-fill-mode: both;
+        }
+
+        .loose-text:hover .loose-letter:nth-child(1) { animation-delay: 0s; }
+        .loose-text:hover .loose-letter:nth-child(2) { animation-delay: 0.03s; }
+        .loose-text:hover .loose-letter:nth-child(3) { animation-delay: 0.06s; }
+        .loose-text:hover .loose-letter:nth-child(4) { animation-delay: 0.09s; }
+        .loose-text:hover .loose-letter:nth-child(5) { animation-delay: 0.12s; }
+        .loose-text:hover .loose-letter:nth-child(6) { animation-delay: 0.15s; }
+        .loose-text:hover .loose-letter:nth-child(7) { animation-delay: 0.18s; }
+        .loose-text:hover .loose-letter:nth-child(8) { animation-delay: 0.21s; }
+        .loose-text:hover .loose-letter:nth-child(9) { animation-delay: 0.24s; }
+        .loose-text:hover .loose-letter:nth-child(10) { animation-delay: 0.27s; }
+
+        @keyframes wobble {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(-3px, -6px) rotate(-8deg); }
+            40% { transform: translate(4px, -2px) rotate(6deg); }
+            60% { transform: translate(-2px, 3px) rotate(-4deg); }
+            80% { transform: translate(2px, -1px) rotate(3deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-top: 1.5rem;
+            line-height: 1.7;
+            max-width: 460px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 2.5rem;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: var(--orange-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 114, 74, 0.3);
+        }
+
+        /* Hero product grouping — side by side */
+        .hero-products {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            gap: 2rem;
+            z-index: 3;
+        }
+
+        .hero-product-item {
+            position: relative;
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hero-product-item img {
+            max-height: 400px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.15));
+        }
+
+        /* Hover: enlarge hovered, shrink sibling */
+        .hero-products:hover .hero-product-item {
+            transform: scale(0.88);
+        }
+
+        .hero-products .hero-product-item:hover {
+            transform: scale(1.12);
+            z-index: 5;
+        }
+
+        .hero-product-shot {
+            z-index: 3;
+        }
+
+        .hero-product-gummies {
+            z-index: 2;
+        }
+
+        /* Decorative swirl behind products */
+        .hero-swirl-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .swirl-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swirl-path {
+            fill: none;
+            stroke: rgba(41, 171, 226, 0.15);
+            stroke-width: 35;
+            stroke-linecap: round;
+        }
+
+        .swirl-path-2 {
+            fill: none;
+            stroke: rgba(232, 114, 74, 0.1);
+            stroke-width: 20;
+            stroke-linecap: round;
+        }
+
+        /* Background blobs */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .blob-1 { width: 500px; height: 500px; background: rgba(41, 171, 226, 0.08); top: -5%; right: 10%; }
+        .blob-2 { width: 400px; height: 400px; background: rgba(232, 114, 74, 0.06); bottom: 5%; left: 5%; }
+
+        /* Benefits Ticker */
+        .benefits-ticker {
+            background: var(--blue);
+            padding: 1.25rem 0;
+            overflow: hidden;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 3rem;
+            animation: scroll 20s linear infinite;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            white-space: nowrap;
+            padding: 0.6rem 1.5rem;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            border-radius: 50px;
+            color: white;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .ticker-item:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            transform: scale(1.05);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 10rem 4rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg) 0%, #FFF0E8 50%, var(--bg) 100%);
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--blue);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+
+        .about h2 span {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .about p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            max-width: 580px;
+            margin: 2rem auto 0;
+            line-height: 1.8;
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 8rem 4rem;
+            background: linear-gradient(180deg, var(--bg) 0%, #FEF5F0 40%, #EDF6FB 100%);
+        }
+
+        .product-section .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .product-section .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .product-image {
+            position: relative;
+            padding: 4rem;
+            background: linear-gradient(145deg, #FFFAF6, #F0F7FC);
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 840px;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+        }
+
+        .product-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .product-tagline {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .product-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        /* Segmented LED Vibe Meters */
+        .vibe-meters {
+            margin-bottom: 3rem;
+        }
+
+        .vibe-meter {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .vibe-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .vibe-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: var(--blue);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .vibe-info {
+            flex: 1;
+        }
+
+        .vibe-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .vibe-label span {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--dark);
+        }
+
+        .vibe-label .vibe-value {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .vibe-segments {
+            display: flex;
+            gap: 3px;
+        }
+
+        .vibe-segment {
+            width: 100%;
+            height: 6px;
+            border-radius: 2px;
+            background: var(--segment-empty);
+            transition: background 0.6s ease;
+        }
+
+        .vibe-segment.filled {
+            background: var(--orange);
+        }
+
+        /* Animate segments from empty */
+        .vibe-segment.not-animated {
+            background: var(--segment-empty) !important;
+        }
+
+        .buy-btn {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(232, 114, 74, 0.3);
+        }
+
+        /* Learn Section */
+        .learn-section {
+            padding: 10rem 4rem;
+            background: linear-gradient(180deg, var(--bg) 0%, #E8F4FA 50%, var(--bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learn-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            perspective: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .learn-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-top: 3px solid var(--blue);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .learn-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(125deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .learn-card:hover::before {
+            opacity: 1;
+        }
+
+        .learn-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(232, 114, 74, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--orange);
+            transform: translateZ(30px);
+        }
+
+        .learn-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            transform: translateZ(20px);
+            color: var(--dark);
+        }
+
+        .learn-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            transform: translateZ(20px);
+        }
+
+        .learn-card a {
+            display: inline-block;
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+            transform: translateZ(20px);
+        }
+
+        .learn-card a:hover {
+            border-bottom-color: var(--orange);
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 8rem 4rem;
+            background: var(--bg-alt);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, #FFECD2, #D4EDFC);
+        }
+
+        .news-content {
+            padding: 2rem;
+        }
+
+        .news-date {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .news-card a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .news-card:hover .news-content h4 {
+            color: var(--orange);
+            transition: color 0.3s;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 8rem 4rem;
+            background: var(--blue);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .newsletter-form button {
+            background: var(--orange);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+            background: var(--orange-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand .logo img {
+            filter: brightness(0) invert(1);
+            height: 60px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.5);
+            margin-top: 1rem;
+            line-height: 1.7;
+        }
+
+        .footer-links h5 {
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+        }
+
+        /* Design Label */
+        .design-label {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dark);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 1000;
+            font-size: 0.85rem;
+        }
+
+        /* Nav scroll state */
+        nav.scrolled {
+            background: rgba(249, 249, 249, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+        }
+
+        /* Active nav link */
+        .nav-links a.active {
+            color: var(--orange);
+        }
+
+        /* Scroll-triggered animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+        }
+
+        .animate-on-scroll.animated {
+            animation-duration: 0.8s;
+            animation-fill-mode: both;
+            animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .animate-on-scroll.animated.fade-up { animation-name: fadeInUp; }
+        .animate-on-scroll.animated.fade-left { animation-name: fadeInLeft; }
+        .animate-on-scroll.animated.fade-right { animation-name: fadeInRight; }
+
+        .stagger-children .animate-on-scroll:nth-child(1) { animation-delay: 0s; }
+        .stagger-children .animate-on-scroll:nth-child(2) { animation-delay: 0.15s; }
+        .stagger-children .animate-on-scroll:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Scroll padding for fixed nav */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#learn">Learn</a></li>
+            <li><a href="#news">News</a></li>
+        </ul>
+        <a href="#hero" class="logo"><img src="assets/logo.webp" alt="Fun Loving Co."></a>
+        <div class="nav-right">
+            <a href="#shop" class="cart-btn">Shop Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Background blobs -->
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+
+        <div class="hero-content">
+            <h1>
+                <span class="loose-text"><span class="loose-letter">G</span><span class="loose-letter">E</span><span class="loose-letter">T</span><span class="loose-letter">&nbsp;</span><span class="loose-letter">L</span><span class="loose-letter">O</span><span class="loose-letter">O</span><span class="loose-letter">S</span><span class="loose-letter">E</span><span class="loose-letter">.</span></span>
+                <span class="highlight">STAY SHARP.</span>
+            </h1>
+            <p class="hero-subtitle">The funnest, legalest, non-alcoholic stuff on earth. All the social feels, none of the regrets.</p>
+            <a href="#shop" class="hero-cta">Let Me Have It!</a>
+        </div>
+
+        <div class="hero-products">
+            <!-- Decorative swirl behind both products -->
+            <div class="hero-swirl-wrap">
+                <svg class="swirl-svg" viewBox="0 0 800 800">
+                    <path class="swirl-path" d="M150,650 C250,700 450,680 550,550 C680,380 650,180 420,130 C220,90 100,280 160,440 C210,570 380,620 500,500" />
+                    <path class="swirl-path-2" d="M600,700 C500,600 300,650 250,500 C180,300 280,150 450,180 C600,200 680,350 620,500 C570,620 400,650 300,580" />
+                </svg>
+            </div>
+            <div class="hero-product-item hero-product-shot">
+                <img src="assets/social-shot.png" alt="Misdemeanor Social Shot">
+            </div>
+            <div class="hero-product-item hero-product-gummies">
+                <img src="assets/gummies.png" alt="Misdemeanor Fun Loving Gummies">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Ticker -->
+    <div class="benefits-ticker">
+        <div class="ticker-track">
+            <span class="ticker-item">No Hangover</span>
+            <span class="ticker-item">100% Legal</span>
+            <span class="ticker-item">FDA GRAS Ingredients</span>
+            <span class="ticker-item">Fast Acting</span>
+            <span class="ticker-item">Alcohol Free</span>
+            <span class="ticker-item">Natural Ingredients</span>
+            <span class="ticker-item">2 Hour Effect</span>
+            <span class="ticker-item">Non-Addictive</span>
+            <span class="ticker-item">No Hangover</span>
+            <span class="ticker-item">100% Legal</span>
+            <span class="ticker-item">FDA GRAS Ingredients</span>
+            <span class="ticker-item">Fast Acting</span>
+            <span class="ticker-item">Alcohol Free</span>
+            <span class="ticker-item">Natural Ingredients</span>
+            <span class="ticker-item">2 Hour Effect</span>
+            <span class="ticker-item">Non-Addictive</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about">
+        <span class="section-tag animate-on-scroll fade-up">Why Misdemeanor?</span>
+        <h2 class="animate-on-scroll fade-up" style="animation-delay: 0.1s">This much fun without alcohol should be criminal. <span>But it's not.</span></h2>
+        <p class="animate-on-scroll fade-up" style="animation-delay: 0.2s">Misdemeanor delivers alcohol's prosocial magic—relaxation, connection, mild euphoria—powered by nature's finest ingredients. Wake up feeling great, not guilty.</p>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section" id="shop">
+        <div class="section-header">
+            <span class="section-tag">Shop</span>
+            <h2>Choose Your Format</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-image animate-on-scroll fade-left">
+                <img src="assets/bottle.webp" alt="Misdemeanor Social Shot">
+            </div>
+            <div class="product-details animate-on-scroll fade-right">
+                <h3>The Social Shot</h3>
+                <p class="product-tagline">Original Liquid Format</p>
+                <p class="product-description">A proprietary blend of Kanna, Cacao Extract, and Licorice Root designed to enhance your social experience. Effects last approximately 2 hours, creating a sense of well-being and connection.</p>
+
+                <div class="vibe-meters">
+                    <div class="vibe-meter">
+                        <div class="vibe-icon">
+                            <svg viewBox="0 0 24 24"><path d="M7 11v-1a5 5 0 0 1 10 0v1"/><path d="M5 19a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1v6H5z"/><path d="M18 19a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-1v6h1z"/><path d="M12 19v3"/><path d="M9 22h6"/></svg>
+                        </div>
+                        <div class="vibe-info">
+                            <div class="vibe-label">
+                                <span>Social</span>
+                                <span class="vibe-value">9.5 / 10</span>
+                            </div>
+                            <div class="vibe-segments" data-fill="9.5">
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vibe-meter">
+                        <div class="vibe-icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 12c2-4 6-7 10-7s8 3 10 7c-2 4-6 7-10 7s-8-3-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <div class="vibe-info">
+                            <div class="vibe-label">
+                                <span>Relaxation</span>
+                                <span class="vibe-value">8.5 / 10</span>
+                            </div>
+                            <div class="vibe-segments" data-fill="8.5">
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vibe-meter">
+                        <div class="vibe-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+                        </div>
+                        <div class="vibe-info">
+                            <div class="vibe-label">
+                                <span>Euphoria</span>
+                                <span class="vibe-value">7.5 / 10</span>
+                            </div>
+                            <div class="vibe-segments" data-fill="7.5">
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="buy-btn">Shop Now — $7.50</a>
+            </div>
+        </div>
+
+        <div class="product-grid" style="margin-top: 6rem;">
+            <div class="product-details animate-on-scroll fade-left">
+                <h3>Fun Loving Gummies</h3>
+                <p class="product-tagline">Chewable Format</p>
+                <p class="product-description">The same proprietary Kanna-based formula in a delicious gummy format. Perfect for on-the-go socializing. Pop a few and feel the connection flow—same effects, different delivery.</p>
+
+                <div class="vibe-meters">
+                    <div class="vibe-meter">
+                        <div class="vibe-icon">
+                            <svg viewBox="0 0 24 24"><path d="M7 11v-1a5 5 0 0 1 10 0v1"/><path d="M5 19a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1v6H5z"/><path d="M18 19a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-1v6h1z"/><path d="M12 19v3"/><path d="M9 22h6"/></svg>
+                        </div>
+                        <div class="vibe-info">
+                            <div class="vibe-label">
+                                <span>Social</span>
+                                <span class="vibe-value">9.0 / 10</span>
+                            </div>
+                            <div class="vibe-segments" data-fill="9">
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vibe-meter">
+                        <div class="vibe-icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 12c2-4 6-7 10-7s8 3 10 7c-2 4-6 7-10 7s-8-3-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
+                        <div class="vibe-info">
+                            <div class="vibe-label">
+                                <span>Relaxation</span>
+                                <span class="vibe-value">8.0 / 10</span>
+                            </div>
+                            <div class="vibe-segments" data-fill="8">
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vibe-meter">
+                        <div class="vibe-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+                        </div>
+                        <div class="vibe-info">
+                            <div class="vibe-label">
+                                <span>Euphoria</span>
+                                <span class="vibe-value">7.0 / 10</span>
+                            </div>
+                            <div class="vibe-segments" data-fill="7">
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                                <div class="vibe-segment"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="buy-btn">Shop Now — $19.50</a>
+            </div>
+            <div class="product-image animate-on-scroll fade-right">
+                <img src="assets/gummies.png" alt="Misdemeanor Fun Loving Gummies">
+            </div>
+        </div>
+    </section>
+
+    <!-- Learn Section -->
+    <section class="learn-section" id="learn">
+        <div style="text-align: center; position: relative; z-index: 1;">
+            <span class="section-tag">Learn</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--dark);">Let's Get <span style="color: var(--orange); font-style: italic;">Serious</span> (For a Sec)</h2>
+        </div>
+        <div class="learn-grid stagger-children">
+            <div class="learn-card animate-on-scroll fade-up">
+                <div class="learn-icon">🌿</div>
+                <h4>What is Kanna?</h4>
+                <p>A South African succulent used for centuries to ease stress and spark connection. Today, it's known as a natural empathogen—gentle, safe, and non-addictive.</p>
+                <a href="#">Learn More &rarr;</a>
+            </div>
+            <div class="learn-card animate-on-scroll fade-up">
+                <div class="learn-icon">🧪</div>
+                <h4>The Science</h4>
+                <p>Kanna acts as a serotonin reuptake inhibitor, boosting mood naturally. Combined with Cacao and Licorice Root, it creates a balanced, social state.</p>
+                <a href="#">Learn More &rarr;</a>
+            </div>
+            <div class="learn-card animate-on-scroll fade-up">
+                <div class="learn-icon">✓</div>
+                <h4>Safety First</h4>
+                <p>All ingredients carry FDA GRAS status (Generally Recognized as Safe). No alcohol, no toxicity, no next-day regrets.</p>
+                <a href="#">Learn More &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="news">
+        <div style="text-align: center;">
+            <span class="section-tag">News</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--dark);">The Latest</h2>
+        </div>
+        <div class="news-grid stagger-children">
+            <div class="news-card animate-on-scroll fade-up">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <p class="news-date">January 26, 2026</p>
+                    <h4>The Party's Over. And It's About to Get Better</h4>
+                    <a href="#">Read More &rarr;</a>
+                </div>
+            </div>
+            <div class="news-card animate-on-scroll fade-up">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <p class="news-date">January 15, 2026</p>
+                    <h4>Why Gen Z is Breaking Up with Alcohol</h4>
+                    <a href="#">Read More &rarr;</a>
+                </div>
+            </div>
+            <div class="news-card animate-on-scroll fade-up">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <p class="news-date">January 5, 2026</p>
+                    <h4>The Connection Crisis: Why We Need New Social Lubricants</h4>
+                    <a href="#">Read More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2 class="animate-on-scroll fade-up">Join the Fun</h2>
+        <p>Be the first to know when Misdemeanor launches. Early access, exclusive offers, and more.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#hero" class="logo"><img src="assets/logo.webp" alt="Fun Loving Co."></a>
+                <p>The funnest, legalest, non-alcoholic stuff on earth. Designed to bring people together.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Shop</h5>
+                <ul>
+                    <li><a href="#">Social Shot</a></li>
+                    <li><a href="#">Gummies</a></li>
+                    <li><a href="#">Bundles</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Learn</h5>
+                <ul>
+                    <li><a href="#">About Kanna</a></li>
+                    <li><a href="#">The Science</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fun Loving Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="design-label">Mockup 1: Bold & Editorial</div>
+
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+        // --- GSAP Hero Reveal Animation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+            // 1. Background blobs fade in
+            tl.to('.hero-blob', { opacity: 1, duration: 1.5, stagger: 0.3 })
+
+            // 2. Products pop in with elastic bounce
+              .to('.hero-product-shot', {
+                  opacity: 1,
+                  scale: 1,
+                  startAt: { scale: 0.7, opacity: 0 },
+                  duration: 1.4,
+                  ease: 'elastic.out(1, 0.5)'
+              }, '-=1.0')
+              .to('.hero-product-gummies', {
+                  opacity: 1,
+                  scale: 1,
+                  startAt: { scale: 0.6, opacity: 0 },
+                  duration: 1.4,
+                  ease: 'elastic.out(1, 0.5)'
+              }, '-=1.1')
+
+            // 3. Swirl paths draw themselves
+              .fromTo('.swirl-path',
+                  { strokeDasharray: 2000, strokeDashoffset: 2000 },
+                  { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut' },
+                  '-=0.8'
+              )
+              .fromTo('.swirl-path-2',
+                  { strokeDasharray: 2000, strokeDashoffset: 2000 },
+                  { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' },
+                  '-=1.8'
+              )
+
+            // 4. Hero text slides in from left
+              .to('.hero-content', {
+                  opacity: 1,
+                  x: 0,
+                  startAt: { x: -60, opacity: 0 },
+                  duration: 1,
+                  ease: 'power2.out'
+              }, '-=1.5');
+
+            // --- Continuous floating for hero products ---
+            gsap.to('.hero-product-shot', {
+                y: -15,
+                duration: 2.5,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut'
+            });
+            gsap.to('.hero-product-gummies', {
+                y: -10,
+                duration: 3,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                delay: 0.5
+            });
+
+            // --- Mouse parallax on the hero ---
+            const hero = document.getElementById('hero');
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+                const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+                gsap.to('.hero-product-shot', {
+                    x: x * 18,
+                    rotationY: x * 6,
+                    rotationX: -y * 4,
+                    duration: 1,
+                    ease: 'power2.out'
+                });
+                gsap.to('.hero-product-gummies', {
+                    x: x * 10,
+                    rotationY: x * 4,
+                    rotationX: -y * 3,
+                    duration: 1.2,
+                    ease: 'power2.out'
+                });
+                gsap.to('.hero-swirl-wrap', {
+                    x: x * 8,
+                    y: y * 8,
+                    duration: 1.4,
+                    ease: 'power2.out'
+                });
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                gsap.to('.hero-product-shot', { x: 0, rotationY: 0, rotationX: 0, duration: 1 });
+                gsap.to('.hero-product-gummies', { x: 0, rotationY: 0, rotationX: 0, duration: 1 });
+                gsap.to('.hero-swirl-wrap', { x: 0, y: 0, duration: 1 });
+            });
+        });
+
+        // --- Scroll-triggered animations ---
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const animateObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    animateObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        animateElements.forEach(el => animateObserver.observe(el));
+
+        // --- Segmented vibe meter animation ---
+        function initVibeMeters() {
+            document.querySelectorAll('.vibe-segments').forEach(container => {
+                const fillCount = parseFloat(container.dataset.fill);
+                const segments = container.querySelectorAll('.vibe-segment');
+                segments.forEach((seg, i) => {
+                    seg.classList.add('not-animated');
+                    if (i < Math.round(fillCount)) {
+                        seg.dataset.shouldFill = 'true';
+                    }
+                });
+            });
+        }
+        initVibeMeters();
+
+        const vibeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const segments = entry.target.querySelectorAll('.vibe-segment');
+                    segments.forEach((seg, i) => {
+                        setTimeout(() => {
+                            seg.classList.remove('not-animated');
+                            if (seg.dataset.shouldFill === 'true') {
+                                seg.classList.add('filled');
+                            }
+                        }, i * 80);
+                    });
+                    vibeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.vibe-meters').forEach(m => vibeObserver.observe(m));
+
+        // --- Navbar scroll effect ---
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // --- Active nav link on scroll ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- Learn card 3D tilt ---
+        document.querySelectorAll('.learn-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xRotation = -((y - rect.height / 2) / rect.height * 12);
+                const yRotation = (x - rect.width / 2) / rect.width * 12;
+                card.style.transform = `perspective(1000px) scale(1.03) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+                card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.08)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0)';
+                card.style.boxShadow = '0 4px 20px rgba(0,0,0,0.04)';
+            });
+        });
+    </script>
+</body>
+</html>
