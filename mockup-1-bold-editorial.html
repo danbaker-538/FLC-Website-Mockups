@@ -977,6 +977,119 @@
         section[id] {
             scroll-margin-top: 80px;
         }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 0;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--bg) 0%, #F2F8FD 50%, var(--bg) 100%);
+        }
+
+        .gallery-track-wrap {
+            overflow: hidden;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            animation: galleryScroll 40s linear infinite;
+            width: max-content;
+            padding: 1rem 0;
+        }
+
+        .gallery-track:hover {
+            animation-play-state: paused;
+        }
+
+        .gallery-item {
+            flex-shrink: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 380px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .gallery-item img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+
+        @keyframes galleryScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Feature Banner */
+        .feature-banner {
+            padding: 2rem 4rem 5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .feature-banner img {
+            max-width: 560px;
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(232, 114, 74, 0.2);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .feature-banner img:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 30px 80px rgba(232, 114, 74, 0.3);
+        }
+
+        /* Enhanced Vibe Meters */
+        .vibe-meter {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(41, 171, 226, 0.04);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(41, 171, 226, 0.12);
+        }
+
+        .vibe-segment.filled {
+            background: var(--orange);
+            box-shadow: 0 0 8px rgba(41, 171, 226, 0.45);
+            animation: segmentGlow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes segmentGlow {
+            0%, 100% { box-shadow: 0 0 4px rgba(41, 171, 226, 0.3); }
+            50% { box-shadow: 0 0 12px rgba(41, 171, 226, 0.75); }
+        }
+
+        /* Newsletter background image */
+        .newsletter {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("marketing materials/3253222.jpg");
+            background-size: cover;
+            background-position: center top;
+            opacity: 0.12;
+            z-index: 0;
+        }
+
+        .newsletter > * {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -1066,6 +1179,33 @@
             not guilty.</p>
     </section>
 
+    <!-- Lifestyle Gallery -->
+    <section class="gallery-section animate-on-scroll fade-up">
+        <div style="text-align: center; padding: 0 4rem; margin-bottom: 3rem;">
+            <span class="section-tag">The Vibe</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--dark);">Feel It Before You Try It</h2>
+        </div>
+        <div class="gallery-track-wrap">
+            <div class="gallery-track">
+                <div class="gallery-item"><img src="marketing materials/3253061.jpg" alt="Unlock the Vibe"></div>
+                <div class="gallery-item"><img src="marketing materials/3253222.jpg" alt="Socialize Unleashed"></div>
+                <div class="gallery-item"><img src="marketing materials/3253225.jpg" alt="Pop a Gummy"></div>
+                <div class="gallery-item"><img src="marketing materials/3253284.jpg" alt="Your New Social Superpower"></div>
+                <div class="gallery-item"><img src="marketing materials/3253288.jpg" alt="Unlock Your Social Sweet Spot"></div>
+                <div class="gallery-item"><img src="marketing materials/3253292.jpg" alt="Your New Social Sweet Spot"></div>
+                <div class="gallery-item"><img src="marketing materials/3253296.jpg" alt="Find Your Social Sweet Spot"></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="gallery-item"><img src="marketing materials/3253061.jpg" alt="Unlock the Vibe"></div>
+                <div class="gallery-item"><img src="marketing materials/3253222.jpg" alt="Socialize Unleashed"></div>
+                <div class="gallery-item"><img src="marketing materials/3253225.jpg" alt="Pop a Gummy"></div>
+                <div class="gallery-item"><img src="marketing materials/3253284.jpg" alt="Your New Social Superpower"></div>
+                <div class="gallery-item"><img src="marketing materials/3253288.jpg" alt="Unlock Your Social Sweet Spot"></div>
+                <div class="gallery-item"><img src="marketing materials/3253292.jpg" alt="Your New Social Sweet Spot"></div>
+                <div class="gallery-item"><img src="marketing materials/3253296.jpg" alt="Find Your Social Sweet Spot"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Product Section -->
     <section class="product-section" id="shop">
         <div class="section-header">
@@ -1079,9 +1219,7 @@
             <div class="product-details animate-on-scroll fade-right">
                 <h3>The Social Shot</h3>
                 <p class="product-tagline">Original Liquid Format</p>
-                <p class="product-description">A proprietary blend of Kanna, Cacao Extract, and Licorice Root designed
-                    to enhance your social experience. Effects last approximately 2 hours, creating a sense of
-                    well-being and connection.</p>
+                <p class="product-description">Our smooth, great-tasting 1oz liquid shot packs a sweet Kanna-infused punch into one delicious hit — fast-acting and keeping you in your social sweet spot for up to 2 hours. No hangover. No regrets.</p>
 
                 <div class="vibe-meters">
                     <div class="vibe-meter">
@@ -1142,8 +1280,7 @@
                     <div class="vibe-meter">
                         <div class="vibe-icon">
                             <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z" />
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z" />
                             </svg>
                         </div>
                         <div class="vibe-info">
@@ -1175,9 +1312,7 @@
             <div class="product-details animate-on-scroll fade-left">
                 <h3>Fun Loving Gummies</h3>
                 <p class="product-tagline">Chewable Format</p>
-                <p class="product-description">The same proprietary Kanna-based formula in a delicious gummy format.
-                    Perfect for on-the-go socializing. Pop a few and feel the connection flow—same effects, different
-                    delivery.</p>
+                <p class="product-description">Pop a few, feel the vibe shift. Our chewy, sweet Kanna-infused gummies pack the same great hit in a fun, grab-and-go format — fast-acting and keeping you in your social sweet spot for up to 2 hours. No hangover. No regrets.</p>
 
                 <div class="vibe-meters">
                     <div class="vibe-meter">
@@ -1238,8 +1373,7 @@
                     <div class="vibe-meter">
                         <div class="vibe-icon">
                             <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z" />
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z" />
                             </svg>
                         </div>
                         <div class="vibe-info">
